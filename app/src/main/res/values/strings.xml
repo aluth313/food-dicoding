@@ -9,6 +9,7 @@
     <string name="detail_food">Detail Makanan</string>
     <string name="name">Ahmad Luthfi Nasrulloh</string>
     <string name="email">luthfiahmad36@gmail.com</string>
+    <string name="share">Share</string>
     <string-array name="data_name">
         <item>Rendang</item>
         <item>Pempek</item>

@@ -1,10 +1,14 @@
 package com.example.submissionandroidluthfi
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.bumptech.glide.Glide
 
 class DetailFoodActivity : AppCompatActivity() {
@@ -24,6 +28,18 @@ class DetailFoodActivity : AppCompatActivity() {
         val tvIngredient = findViewById<TextView>(R.id.tv_detail_ingredients)
         val tvCity = findViewById<TextView>(R.id.tv_detail_city)
         val tvDescription = findViewById<TextView>(R.id.tv_detail_description)
+        val btnShare = findViewById<Button>(R.id.btn_share)
+
+        btnShare.setOnClickListener {
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, dataFood?.name ?: "-")
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+        }
 
         Glide.with(applicationContext)
             .load(dataFood?.photo)
