@@ -4,17 +4,21 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import com.bumptech.glide.Glide
 
 class DetailFoodActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_food)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val dataFood = if (Build.VERSION.SDK_INT >= 33){
             intent.getParcelableExtra<Food>("key_food", Food::class.java)
@@ -48,5 +52,15 @@ class DetailFoodActivity : AppCompatActivity() {
         tvIngredient.text = dataFood?.ingredients ?: "-"
         tvCity.text = dataFood?.city ?: "-"
         tvDescription.text = dataFood?.description ?: "-"
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
