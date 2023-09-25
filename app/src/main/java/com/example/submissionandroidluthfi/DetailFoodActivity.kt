@@ -32,7 +32,7 @@ class DetailFoodActivity : AppCompatActivity() {
         val tvIngredient = findViewById<TextView>(R.id.tv_detail_ingredients)
         val tvCity = findViewById<TextView>(R.id.tv_detail_city)
         val tvDescription = findViewById<TextView>(R.id.tv_detail_description)
-        val btnShare = findViewById<Button>(R.id.btn_share)
+        val btnShare = findViewById<Button>(R.id.action_share)
 
         btnShare.setOnClickListener {
             val sendIntent: Intent = Intent().apply {
